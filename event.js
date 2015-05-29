@@ -71,7 +71,7 @@ var wss = new WebSocketServer({host: argv.host, port: parseInt(argv._[2])});
 
 messages.catch_up = function (client) {
     this.each(function (message) {
-        if (message.time > client.last_msg)
+        if (message.id > client.last_msg)
             client.got_message(message);
     });
 };
@@ -108,7 +108,7 @@ wss.on('connection', function (socket) {
     socket.got_message = function (message) {
         if (socket.filter === true || message.channel in socket.filter)
             socket.send(JSON.stringify(message));
-        socket.last_msg = message.time;
+        socket.last_msg = message.id;
     };
 
     socket.on('message', function (request) {
@@ -175,7 +175,7 @@ if (argv.http_port !== null) {
         };
         var got = false;
         messages.each(function (message) {
-            if (!got && message.time > req.last_msg)
+            if (!got && message.id > req.last_msg)
                 got = req.got_message(message);
         });
         if (!got) {
