@@ -2,7 +2,6 @@ var WebSocketServer = require('ws').Server;
 var set = require('simplesets').Set;
 var queue = require('qu');
 var amqp = require('amqp');
-var StringDecoder = require('string_decoder').StringDecoder;
 var url = require('url');
 
 if (typeof String.prototype.startsWith != 'function') {
