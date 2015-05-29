@@ -41,7 +41,6 @@ var pollers = new set();
 var messages = new queue();
 var max_queue = argv.max_queue;
 var comet_timeout = argv.comet_timeout;
-var utf8 = new StringDecoder('utf8');
 
 var rabbitmq = amqp.createConnection({url: argv._[0]});
 
@@ -53,7 +52,7 @@ rabbitmq.on('ready', function () {
     rabbitmq.queue('', function (q) {
         q.bind(argv._[1], '#');
         q.subscribe(function (data) {
-            message = JSON.parse(utf8.write(data.data));
+            message = JSON.parse(data.data.toString('utf8'));
             messages.push(message);
             if (messages.length > max_queue)
                 messages.shift();
