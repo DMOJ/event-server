@@ -1,0 +1,26 @@
+{
+  "name": "event-server",
+  "version": "1.0.0",
+  "description": " RabbitMQ-based websocket/comet event server",
+  "main": "event.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DMOJ/event-server.git"
+  },
+  "author": "Don Mills Online Judge",
+  "license": "AGPLv3",
+  "bugs": {
+    "url": "https://github.com/DMOJ/event-server/issues"
+  },
+  "homepage": "https://github.com/DMOJ/event-server",
+  "dependencies": {
+    "amqp": "^0.2.4",
+    "qu": "^0.1.0",
+    "simplesets": "^1.2.0",
+    "ws": "^0.7.2",
+    "yargs": "^3.10.0"
+  }
+}
