@@ -48,7 +48,7 @@ rabbitmq.on('error', function(e) {
 });
 
 rabbitmq.on('ready', function () {
-    rabbitmq.queue('', function (q) {
+    rabbitmq.queue('', {exclusive: true}, function (q) {
         q.bind(argv._[1], '#');
         q.subscribe(function (data) {
             message = JSON.parse(data.data.toString('utf8'));
