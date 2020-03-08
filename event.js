@@ -45,6 +45,7 @@ var rabbitmq = amqp.createConnection({url: argv._[0]});
 
 rabbitmq.on('error', function(e) {
   console.log('amqp connection error...', e);
+  process.exit(1);
 });
 
 rabbitmq.on('ready', function () {
